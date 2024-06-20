@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% block content %}
+<!-- ======= Sign In Section ======= -->
+
+<div class="form-container">
+    <!-- Registration Form -->
+    <form class="register-form" onsubmit="handleRegister(event)" >
+        <h2>Register</h2>
+        <div class="form-group">
+            <label for="user-name">Username:</label>
+            <input type="text" id="user-name" name="user-name" required>
+        </div>
+        <div class="form-group">
+            <label for="user-email">Email:</label>
+            <input type="email" id="user-email" name="user-email" required>
+        </div>
+        <div class="form-group">
+            <label for="user-password">Password:</label>
+            <input type="password" id="user-password" name="user-password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register">
+        </div>
+        
+
+        <div class="form-group switch-form">
+            <p>Already have an account? <a href="/login" onclick="switchForm('login-form')">Login here</a></p>
+            <p>Forgot password? <a href="/new_password" onclick="switchForm('forgot-password-form')">Create new password</a></p>
+        </div>
+
+    </form>
+
+    <div style="text-align: center;" id="resendVerif" class="hidden">
+        <p>Didn't get verification email? <a onclick="handleResendVerif(event)" href="#">Resend</a></p>
+    </div>
+
+    <div id="custom-alert" class="hidden">
+        <span class="alert-message"></span>
+        <button id="close-alert">Ok</button>
+    </div>
+
+</div>
+  
+  <!-- End Sign In Section -->
+
+
+{% endblock %}

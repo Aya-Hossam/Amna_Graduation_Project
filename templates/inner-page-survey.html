@@ -1,0 +1,179 @@
+{% extends "main.html" %}
+{% block content %}
+
+  <!-- ======= survey Section ======= -->
+  <section id="survey" class="survey section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Breast Cancer Risk Assessment Survey</h2>
+        <p>Our risk assessment tool uses analysis techniques and machine learning algorithms to provide a risk prediction for those concered with developing breast cancer.</p>
+        <p>Through this survey you may be classified as a high risk individual or a low risk individual.</p>
+        <p>IMPORTANT NOTE: If you currently have any concerns about your breasts you should consult with your doctor immediately. This tool doesn't replace a medical consultation!</p>
+      </div>
+
+      <form role="form" class="php-email-form" id="survey-form" onsubmit="handleSurvey(event)">
+        <div class="row">
+          <p style="display: inline-block;">What is your age (age group)?
+            <span class="info-icon" data-msg="This risk assessment tool is developed for individuals aged 18 and above.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="age_group_5_years" id="age_group_5_years" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="18-29">18-29</option>
+            <option value="30-34">30-34</option>
+            <option value="35-39">35-39</option>
+            <option value="40-44">40-44</option>
+            <option value="45-49">45-49</option>
+            <option value="50-54">50-54</option>
+            <option value="55-59">55-59</option>
+            <option value="60-64">60-64</option>
+            <option value="65-69">65-69</option>
+            <option value="70-74">70-74</option>
+            <option value="75-79">75-79</option>
+            <option value="80-84">80-84</option>
+            <option value="Age 85 or older">Age 85 or older</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">What is your race/ethnicity?
+            <span class="info-icon" data-msg="This question asks about the individual's racial and ethnic background.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="race_eth" id="race_eth" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="Non-Hispanic white">Non-Hispanic white</option>
+            <option value="Non-Hispanic black">Non-Hispanic black</option>
+            <option value="Asian/Pacific Islander">Asian/Pacific Islander</option>
+            <option value="Native American">Native American</option>
+            <option value="Hispanic">Hispanic</option>
+            <option value="Other/mixed">Other/mixed</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">Have any of your first-degree relatives (mother, sister or daughter) been diagnosed with breast cancer?
+            <span class="info-icon" data-msg="Only mark yes if your mother, sister or daughter has been diagnosed with breast cancer.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="first_degree_hx" id="first_degree_hx" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">How old were you when you had your first menstrual period (Age at menarche)?
+            <span class="info-icon" data-msg="Menarche is the medical term for your first period. This question asks about your age when you first experienced menstruation.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="age_menarche" id="age_menarche" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="Age 14 or older">Age 14 or older</option>
+            <option value="Age 12-13">Age 12-13</option>
+            <option value="Age &lt; 12">Age &lt; 12 </option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">What was your age when you had your first child?
+            <span class="info-icon" data-msg="This question asks about your age when your first child was born if any.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="age_first_birth" id="age_first_birth" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="Age &lt; 20">Age &lt; 20</option>
+            <option value="Age 20-24">Age 20-24</option>
+            <option value="Age 25-29">Age 25-29</option>
+            <option value="Age 30 or older">Age 30 or older</option>
+            <option value="Haven't given birth yet">Haven't given birth yet</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">Have you had any prior breast biopsies or aspiration?
+            <span class="info-icon" data-msg="This question asks if you've had any procedures where a small sample of breast tissue is removed for examination. A biopsy uses a needle or surgical incision, while aspiration uses a needle to withdraw fluid.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="biophx" id="biophx" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">What is your BI-RADS breast density?
+            <span class="info-icon" data-msg="This question asks about your BI-RADS breast density. BI-RADS (Breast Imaging Reporting and Data System) is a standardized way to categorize breast density based on mammograms.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="BIRADS_breast_density" id="BIRADS_breast_density" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="Almost entirely fat">Almost entirely fat</option>
+            <option value="Scattered fibroglandular densities">Scattered fibroglandular densities</option>
+            <option value="Heterogeneously dense">Heterogeneously dense</option>
+            <option value="Extremely dense">Extremely dense</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">What is your menopausal status?
+            <span class="info-icon" data-msg="Select Pre-/Perimenopausal if the individual has continued menstrual periods or is unsure if periods have stopped. Select Postmenopausal if periods have stopped naturally or surgically.">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="menopaus" id="menopaus" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="Pre-or peri-menopausal">Pre-or peri-menopausal</option>
+            <option value="Post-menopausal">Post-menopausal</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        <div class="row">
+          <p style="display: inline-block;">What is your body mass index (kg/m^2)?
+            <span class="info-icon" data-msg="Body mass index (BMI) is a measure of body fat based on height and weight and is calculated as follows: BMI = Weight (kg)/Height (m)².">
+              <i class="fas fa-info-circle"></i>
+            </span>
+          </p>
+          <select name="bmi_group" id="bmi_group" class="form-select" required>
+            <option value="" disabled selected>Select option</option>
+            <option value="10-24.99">10-24.99</option>
+            <option value="25-29.99">25-29.99</option>
+            <option value="30-34.99">30-34.99</option>
+            <option value="35 or more">35 or more</option>
+          </select>
+          <div class="validate"></div>          
+        </div>
+
+        
+        <div  id="survey-result" class="hidden"></div>
+        <br>
+        <div id="recommendation-container" class="hidden" style="text-align: center; font-size: large;"></div>
+        <br>
+        <div class="survey-refresh-container">
+          <a href="/survey" id="survey-refresh" class="hidden" title="Click this link to make another prediction">Make another prediction</a></div>
+        <div class="text-center"><button id="survey-submit-button" type="submit">Submit Survey</button></div>
+
+      </form>
+
+    </div>
+  </section><!-- End survey Section -->
+
+  {% endblock %}

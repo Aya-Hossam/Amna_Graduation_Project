@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+
+  <!-- ======= CT Tool Section ======= -->
+ <div class="CT-upload-form">
+    <h1>CT Scan Analysis Tool</h1>
+    <div class="horizontal-line"></div>
+    <section class="tool-steps">
+      <ol>
+        <li>Upload your CT scan securely.</li>
+        <br>
+        <li>
+          AI-powered analysis: Our advanced technology analyzes your scan and predicts the likelihood of a breast mass being:
+          <ul>
+            <li>Benign (non-cancerous): Providing peace of mind.</li>
+            <li>Malignant (cancerous): Helping you get the care you need quickly.</li>
+            <li>Normal tissue: Minimizing unnecessary follow-up procedures.</li>
+          </ul>
+        </li>
+      </ol>
+      <div><p>IMPORTANT NOTE: If you currently have any concerns about your breasts you should consult with your doctor immediately. This tool doesn't replace a medical consultation!</p></div>
+    </section>
+    <form action="/ct_scan" method="post" enctype="multipart/form-data" id="ct-scan-form" onsubmit="handleCTScan(event)">
+      <div class="CT-form-group">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="ct-image" name="image" accept="image/jpeg,image/png" required>
+      </div>
+      <br>
+      <div class="CT-form-group" id="ct-button">
+        <button type="submit">Analyze</button>
+      </div>
+    </form>
+    <div id="ct-result" class="hidden"></div>
+    <a href="/ct_scan" id="ct-refresh" class="hidden" title="Click this link to make another prediction">Click here to make another prediction</a>
+  </div>
+  <!-- CT Tool Section -->
+
+
+  <!-- ======= Footer ======= -->
+{% endblock %}

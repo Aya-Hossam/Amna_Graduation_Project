@@ -1,0 +1,70 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+  <!--start admin dashboard-->
+  <div class="admin-container">
+    <nav class="sidebar">
+      <h2>User Management</h2>
+      <ul>
+        <li><a href='#' onclick="populateUserList()" id="view-users">View Users</a></li>
+        <li><a href="#" onclick="showUserForm()" id="add-user">Add User</a></li>
+      </ul>
+    </nav>
+    <main id="main-content">
+      <h2 id="title">Welcome Admin!</h2>
+      <table id="user-table" class="hidden" >
+        <h3 id="view-title" class="hidden">View users</h3>
+        <input type="text" id="search" placeholder="Search Users" class="hidden" oninput="searchUsers()">
+        <thead>
+          <tr>
+            <th>User Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+      <form id="add-user-form" class="hidden" onsubmit="adminAddUser(event)">
+        <h3>Add New User</h3>
+
+        <div class="admin-form-group">
+          <label for="admin-username">Username:</label>
+          <input type="text" id="admin-username" name="admin-username" required>
+        </div>
+
+        <div class="admin-form-group">
+            <label for="admin-email">Email:</label>
+            <input type="email" id="admin-email" name="admin-email" required>
+        </div>
+
+        <div class="admin-form-group">
+            <label for="admin-password">Password:</label>
+            <input type="password" id="admin-password" name="admin-password" required>
+        </div>
+
+        <div class="admin-form-group">
+            <label for="admin-confirm-password">Confirm Password:</label>
+            <input type="password" id="admin-confirm-password" name="admin-confirm-password" required>
+        </div>
+
+        <div class="admin-form-group">
+          <button type="submit">Add User</button>
+        </div>
+      
+      </form>
+    </main>
+
+    <div id="custom-alert" class="hidden">
+      <span class="alert-message"></span>
+      <button id="close-alert">Ok</button>
+    </div>
+
+  </div>
+  <!--end admmin dashboard-->
+
+  </main><!-- End #main -->
+  
+  {% endblock %}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Breast Cancer Risk Prediction</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+<link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+
+<script src="static/js/main.js" defer></script> <!-- Link the JavaScript file -->
+
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+<!--  <div id="topbar" class="d-flex align-items-center fixed-top">-->
+<!--    <div class="container d-flex justify-content-between">-->
+<!--      <div class="contact-info d-flex align-items-center">-->
+<!--        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>-->
+<!--        <i class="bi bi-phone"></i> +1 5589 55488 55-->
+<!--      </div>-->
+<!--      <div class="d-none d-lg-flex social-links align-items-center">-->
+<!--        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>-->
+<!--        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>-->
+<!--        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>-->
+<!--        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <div id="confirm-message" style="display: none;"></div>
+
+      <!-- <h1 class="logo me-auto"><a href="#">AMNA</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="/home" class="logo me-auto"><img  src="{{ url_for('static', filename='img/Amna_logo_2.png') }}" alt="AMNA" class="img-fluid"></a>
+
+      <i class="bi bi-list mobile-nav-toggle"></i>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <input type="checkbox" id="check">
+        <label for="check" class="dropdown-nav-toggle">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a class="nav-link scrollto" href="/#">Home</a></li>
+          <li class="dropdown"><a href="/#services"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/survey">Risk Assessment Survey</a></li>
+              <li><a href="/ct_scan">CT scan</a></li>
+              <li class="dropdown"><a href="/articles">Articles <i class="bi bi-chevron-right"></i></a>
+
+                <ul>
+                  <li><a href="/age1">Age Risk Factor</a></li>
+                  <li><a href="/first_degree2">First-Degree Relatives</a></li>
+                  <li><a href="/first_period3">First Menstrual Period</a></li>
+                  <li><a href="/fist_birth4">Age At First Childbirth</a></li>
+                  <li><a href="/breast_density5">Breast Density</a></li>
+                  <li><a href="/menopause6">Menopause</a></li>
+                  <li><a href="/bmi7">Body Mass Index</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="/#about-us">About Us</a></li>
+
+          {% if is_admin %}
+          <li><a href="/admin">Dashboard</a></li>
+          {% endif %}
+
+        </ul>
+      </nav><!-- .navbar -->
+
+<!--      <a href="/login" class="appointment-btn scrollto">Sign In</a>-->
+      {% if logged_in %}
+      <a href="/logout" class="appointment-btn scrollto">Log Out</a>
+      {% else %}
+      <a href="/login" class="appointment-btn scrollto">Sign In</a>
+      {% endif %}
+
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+  {% block content %}{% endblock %}
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <!-- <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>AMNA</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div> -->
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#about-us">About us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/survey">Risk Assessment Tool</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/ct_scan">CT Scan Tool</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/articles">Articles</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>AMNA</span></strong>. All Rights Reserved
+        </div>
+        <!-- <div class="credits"> All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div> -->
+      </div>
+      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div> -->
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
