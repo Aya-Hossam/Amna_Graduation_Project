@@ -609,8 +609,6 @@ function handleCTScan(event){
   event.preventDefault(); // Prevent default form submission
 
   const formData = new FormData(document.getElementById('ct-scan-form'));
-  console.log(formData)
-
 
   fetch('/ct_scan', {
     method: 'POST',
