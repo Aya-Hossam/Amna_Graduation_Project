@@ -208,7 +208,6 @@ def register():
         else:
             return render_template('register.html')
     except Exception as e:
-        print(e)
         return jsonify({'message': 'An Error Has Occured','Content-Type': 'application/json', 'status': 0}), 403
 
 # Verify the email address
@@ -276,7 +275,6 @@ def resend_confirmation():
             return jsonify({'message': 'An error occured while sending the validation link.', 'Content-Type': 'application/json', 'status': 0}), 400  
         
     except Exception as e:
-        print(e)
         return jsonify({'message': 'Oops! An error has occured. Please try again.', 'Content-Type': 'application/json', 'status': 0}), 400
         
         
@@ -422,11 +420,9 @@ def post_survey():
                 return jsonify({'message': f'Your prediction is: {prediction_label}','prediction': prediction_label, 'Content-Type': 'application/json', 'status': 1}), 200
                 
             except Exception as e:
-                print(e)
                 return jsonify({'message': 'An Error Has Occured','Content-Type': 'application/json', 'status': 0}), 401
         
     except Exception as e:
-        print(e)
         return jsonify({'message': 'An Error Has Occured','Content-Type': 'application/json', 'status': 0}), 403
 
 #---------------------------------------------------------------------
@@ -481,7 +477,6 @@ def post_ct():
             # Get the file type of the image
             filename = image_file.filename
             file_type = filename.split('.')[-1].lower()
-            print(file_type)
 
             
             if not allowed_mime_type(file_type):
@@ -526,14 +521,12 @@ def post_ct():
                     
                 
                 except Exception as e:
-                    print(e)
                     return jsonify({'message':'An error has occured','prediction': None, 'Content-Type': 'application/json', 'status': 0}), 401
             else:
                 # Handle the possibility that no image is provided.
                 return jsonify({'message':'Please upload a CT scan image.','prediction': None, 'Content-Type': 'application/json', 'status': 0}), 400
                 
         except Exception as e:
-            print(e)
             return jsonify({'message':'An error has occured','prediction': None, 'Content-Type': 'application/json', 'status': 0}), 401
 
 #---------------------------------------------------------------------
