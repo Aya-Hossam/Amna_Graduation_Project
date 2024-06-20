@@ -510,6 +510,14 @@ def post_ct():
                                         'status': 1,
                                         'recommendation': 
                                             """It's recommended that you seek immediate medical attention!\n
+                                            These are things you can do to decrease your risk:\n
+                                            1. Maintain a healthy weight.\n
+                                            2. Stay physically active. \n
+                                            3. Limit alcohol intake. \n
+                                            4. Eat a healthy diet rich in fruits, vegetables, and whole grains. \n
+                                            5. Discuss hormone replacement therapy (HRT) with your doctor to understand risks and benefits. \n
+                                            6. Talk to your doctor about genetic testing if you have a strong family history. \n
+                                            7. Schedule regular mammograms starting at a recommended age (often 40 or 45).
                                             """}), 200
                     
                     else:
