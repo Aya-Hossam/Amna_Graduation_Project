@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, url_for, session, redirect, send_from_directory, flash
+from flask import Flask, render_template, request, jsonify, url_for, session, redirect
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -6,7 +6,6 @@ from PIL import Image
 import preProcess_survey as surv
 import pickle
 import kickbox
-# from email_validate import validate
 from threading import Thread
 from datetime import timedelta, datetime
 import requests
@@ -93,7 +92,6 @@ def logout():
 
 # Login generalized API
 @app.route('/login', methods=['GET', 'POST'])
-@logout_required
 def login():
     try:
         # Forget previous user

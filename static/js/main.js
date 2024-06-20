@@ -483,6 +483,8 @@ function handleLogin(event) {
     // Handle authentication failure
     displayErrorMessage(error.message,'/login'); // return the message and redirection route
   });
+
+  document.getElementById('login-form').reset()
 }
 
 //-----------------------------Register API---------------------------------------------
@@ -610,6 +612,7 @@ function handleCTScan(event){
 
   const formData = new FormData(document.getElementById('ct-scan-form'));
 
+
   fetch('/ct_scan', {
     method: 'POST',
     body: formData
@@ -655,6 +658,8 @@ function handleCTScan(event){
     document.getElementById('ct-result').classList.remove('hidden');
     document.getElementById('ct-result').textContent = 'An error occurred.';
   });
+
+  document.getElementById('ct-scan-form').reset()
 }
 
 
