@@ -573,8 +573,12 @@ def bmi_article7():
 
 # Function to add new admin account
 def add_admin_account(email, password, username):
-    users.sign_up_admin(email, password, username)
-
+    sign_up_stats = users.sign_up_admin(email, password, username)
+    if sign_up_stats:
+        print("Admin added successfully.")
+    else:
+        print("Can't add more than 2 admins.")
+    
 # Route to get the admin dashboard
 @app.route('/admin', methods=['GET'])
 def admin_dashboard():
@@ -623,7 +627,20 @@ def add_user():
     if success:
         create_date = datetime.now()
         users.set_creation_date(user_email, create_date)
-        return jsonify({'message': 'User added successfully. Please verify your email!', 'Content-Type': 'application/json', 'status': 1}) , 201
+        
+        # Generate token and send verification email
+        token = generate_token(user_email, app.secret_key, app.security_password_salt)
+                
+        confirm_url = url_for('confirm_email', token=token, _external=True)
+        html = render_template('activate_email_content.html', confirm_url=confirm_url)
+        subject = "Please confirm your email"
+                
+        if send_email(user_email, subject, html):
+            return jsonify({'message': 'Registration complete! Please verify the email.', 'Content-Type': 'application/json', 'status': 1}), 200
+        else:
+            delete_user_status = users.delete_user_by_email(user_email)
+            return jsonify({'message': 'An error occured while sending the validation link.', 'Content-Type': 'application/json', 'status': 0}), 400
+                
     else:
         return jsonify({'message': 'Account already exists.', 'Content-Type': 'application/json', 'status': 0}) , 500
 

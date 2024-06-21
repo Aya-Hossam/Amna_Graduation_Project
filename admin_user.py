@@ -1,4 +1,3 @@
-# Importing libraries
 import sqlite3
 import bcrypt 
 from datetime import datetime, timedelta
@@ -11,22 +10,32 @@ def get_db_connection():
 def create_db():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS users 
-                      (user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users (
+                      user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
                       user_email TEXT NOT NULL UNIQUE, 
                       user_password TEXT NOT NULL,
-                      user_name TEXT NOT NULL)''')
-    cursor.execute('''CREATE TABLE IF NOT EXISTS admin
-                    (admin_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                     admin_email  TEXT NOT NULL UNIQUE,
-                     admin_password  TEXT NOT NULL,
-                     admin_username TEXT NOT NULL UNIQUE,
-                     CHECK ((SELECT COUNT(*) FROM admin) <= 2))''' )
-    
-    
-    
+                      user_name TEXT NOT NULL,
+                      confirmed_on NUMERIC,
+                      is_confirmed INTEGER NOT NULL DEFAULT 0,
+                      created_on NUMERIC
+                      )''')
+
+
+    cursor.execute('''CREATE TABLE IF NOT EXISTS admin (
+                          admin_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          admin_email TEXT NOT NULL UNIQUE,
+                          admin_password TEXT NOT NULL,
+                          admin_username TEXT NOT NULL UNIQUE,
+                          is_confirmed INTEGER NOT NULL DEFAULT 1
+                          )''')
+
     conn.commit()
     conn.close()
+
+# Run the function to create the tables
+create_db()
+
 
 # Save and close database
 def commit_and_close(conn):
@@ -52,26 +61,40 @@ def sign_up_user(email, user_password, username):
         cursor = conn.cursor()
         cursor.execute("INSERT INTO users(user_email, user_password, user_name) VALUES (?, ?, ?)", (email, hashed_password, username))
         commit_and_close(conn)
-        #return True
         return True
-    except sqlite3.IntegrityError:
+    except sqlite3.IntegrityError as e:
+        print(e)
         commit_and_close(conn)
-        #return False
         return False
 
-# Add a new admin =====> only 2 admins
 def sign_up_admin(email, admin_password, username):
     conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Check the number of existing admins
+    cursor.execute("SELECT COUNT(*) FROM admin")
+    count = cursor.fetchone()[0]
+    
+    if count >= 2:
+        print("Cannot add more than 2 admins.")
+        conn.close()
+        return False
+    
     hashed_password = hash_password(admin_password)
     try:
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO admin(admin_email, admin_password, admin_username) VALUES (?, ?, ?)", (email, hashed_password, username))
+        cursor.execute("INSERT INTO admin(admin_email, admin_password, admin_username) VALUES (?, ?, ?)", 
+                       (email, hashed_password, username))
         commit_and_close(conn)
+        print("Admin added successfully.")
         return True
-    except sqlite3.IntegrityError:
-        commit_and_close(conn)
+    except sqlite3.IntegrityError as e:
+        print(f"Integrity error: {e}")
+        conn.close()
         return False
-
+    except Exception as e:
+        print(f"Error: {e}")
+        conn.close()
+        return False
 
 # Delete a user by user_id
 def delete_user(user_id):
@@ -261,3 +284,6 @@ def check_user_email(email):
   commit_and_close(conn)
   
   return count > 0  # Check if count is greater than 0 (user exists)
+
+
+
