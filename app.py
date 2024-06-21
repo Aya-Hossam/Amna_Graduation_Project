@@ -86,6 +86,7 @@ def is_admin():
 def logout():
     # Forget any user_id
     session.clear()
+    session['is_logged_in'] = False
 
     # Redirect user to login form
     return render_template('home.html')
