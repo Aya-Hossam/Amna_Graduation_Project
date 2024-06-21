@@ -471,11 +471,10 @@ function handleLogin(event) {
       if (nextParam) {
 
         displaySuccessMessage(data.message, nextParam);
-        // window.location.href = nextParam;
-        // You can now use the 'nextParam' variable
+
       } else {
         displaySuccessMessage(data.message, '/home');
-        // window.location.replace('/home')
+
       }
     }
   })
@@ -576,7 +575,6 @@ function handleResendVerif(event) {
     "user-email": storedEmail
   };
 
-  // displaySuccessMessage("A new confirmation email has been sent.")
 
   // Make a POST request to the backend API for resending email
   fetch('/resend', {
@@ -867,7 +865,7 @@ function displaySuccessMessage(message, redirectUrl) {
     customAlert.classList.add("hidden"); // Hide the alert on close button click
     if (redirectUrl) {
       // window.location.href = redirectUrl; // Redirect if URL provided
-      window.location.assign(redirectUrl, true);
+      window.location.replace(redirectUrl);
     }
     else{
       customAlert.classList.add("hidden");
@@ -890,7 +888,7 @@ function displayErrorMessage(message, redirectUrl) {
     customAlert.classList.add("hidden"); // Hide the alert on close button click
     if (redirectUrl) {
       // window.location.href = redirectUrl; // Redirect if URL provided
-      window.location.assign(redirectUrl,  true)
+      window.location.replace(redirectUrl);
     }
     else{
       customAlert.classList.add("hidden");
