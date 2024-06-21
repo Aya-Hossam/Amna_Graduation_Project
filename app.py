@@ -409,7 +409,7 @@ def post_survey():
                 for i in range(len(preProcessed_data)):
                     surveyDict[database_labels[i]] = preProcessed_data[i]
                 
-                # survDB.add_survey_data(surveyDict)
+                survDB.add_survey_data(surveyDict)
                 
                 
                 if prediction == 1:

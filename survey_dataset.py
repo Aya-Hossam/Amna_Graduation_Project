@@ -14,7 +14,8 @@ def create_db():
     cursor = conn.cursor()
     try:
         cursor.execute('''CREATE TABLE IF NOT EXISTS survey_dataset_table
-                   (age_group_5_years INTEGER NOT NULL,
+                   (record_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   age_group_5_years INTEGER NOT NULL,
                    race_eth INTEGER NOT NULL,
                    first_degree_hx INTEGER NOT NULL,
                    age_menarche INTEGER NOT NULL,
