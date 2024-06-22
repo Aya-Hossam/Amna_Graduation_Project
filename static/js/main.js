@@ -409,7 +409,7 @@ function adminAddUser(event){
   .then(response => response.json())
   .then(data => {
 
-    if (!data.status){
+    if (data.status == 0){
       general_error(data.message) // return the message and redirection route
     }
     else{
@@ -456,7 +456,7 @@ function handleLogin(event) {
   })
   .then(response => response.json())
   .then(data => {
-    if (!data.status) {
+    if (data.status == 0) {
       displayErrorMessage(data.message,'/login') // return the message and redirection route
     }
     else{
@@ -541,7 +541,7 @@ async function handleRegister(event) {
   })
   .then(response => response.json())
   .then(data => {
-    if (!data.status){
+    if (data.status == 0){
       displayErrorMessage(data.message,'/register') // return the message and redirection route
     }
     else{
@@ -587,7 +587,7 @@ function handleResendVerif(event) {
   .then(response => response.json())
   .then(data => {
 
-    if (!data.status){
+    if (data.status == 0){
     displayErrorMessage(data.message) // return the message and redirection route
   }
   else{
@@ -815,7 +815,7 @@ function handleChangePassword(event) {
   .then(response => response.json())
   .then(data => {
 
-    if (!data.status){
+    if (data.status == 0){
 
       displayErrorMessage(data.message) // return the message and redirection route
       document.getElementById('change-password-user-email').value = "";
