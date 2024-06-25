@@ -187,9 +187,9 @@ h6 {
 }
 
 /**
-* Appointment Button *
+* Sign Button *
 */
-.appointment-btn {
+.sign-btn {
   margin-left: 25px;
   background: #C83869;
   color: #fff;
@@ -201,13 +201,13 @@ h6 {
   display: inline-block;
 }
 
-.appointment-btn:hover {
+.sign-btn:hover {
   background: #E689AE;
   color: #fff;
 }
 
 @media (max-width: 768px) {
-  .appointment-btn {
+  .sign-btn {
     margin: 0 15px 0 0;
     padding: 6px 18px;
   }
@@ -647,68 +647,6 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-  padding: 20px 0;
-  background-color: #f1f7fd;
-  min-height: 40px;
-  margin-top: 120px;
-}
-
-@media (max-width: 992px) {
-  .breadcrumbs {
-    margin-top: 100px;
-  }
-}
-
-.breadcrumbs h2 {
-  font-size: 24px;
-  font-weight: 300;
-  margin: 0;
-}
-
-@media (max-width: 992px) {
-  .breadcrumbs h2 {
-    margin: 0 0 10px 0;
-  }
-}
-
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-}
-
-.breadcrumbs ol li+li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li+li::before {
-  display: inline-block;
-  padding-right: 10px;
-  color: #6c757d;
-  content: "/";
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs .d-flex {
-    display: block !important;
-  }
-
-  .breadcrumbs ol {
-    display: block;
-  }
-
-  .breadcrumbs ol li {
-    display: inline-block;
-  }
-}
-
-/*--------------------------------------------------------------
 # Why Us
 --------------------------------------------------------------*/
 .why-us .content {
@@ -1071,69 +1009,6 @@ section {
   color: #fff;
   text-decoration: none;
 }
-
-/*--------------------------------------------------------------
-Articles Old
---------------------------------------------------------------*/
-/* .articles {
-  overflow: hidden;
-  margin-top: 100px;
-}
-
-.articles .nav-tabs {
-  border: 0;
-}
-
-.articles .nav-link {
-  border: 0;
-  padding: 12px 15px 12px 0;
-  transition: 0.3s;
-  color: rgb(106, 0, 60);
-  border-radius: 0;
-  border-right: 2px solid #ebf1f6;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.articles .nav-link:hover {
-  color: #C83869;
-}
-
-.articles .nav-link.active {
-  color: #C83869;
-  border-color: #C83869;
-}
-
-.articles .tab-pane.active {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.articles .details h3 {
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: rgb(106, 0, 60);
-}
-
-.articles .details p {
-  color: #777777;
-}
-
-.articles .details p:last-child {
-  margin-bottom: 0;
-}
-
-@media (max-width: 992px) {
-  .articles .nav-link {
-    border: 0;
-    padding: 15px;
-  }
-
-  .articles .nav-link.active {
-    color: #fff;
-    background: #C83869;
-  }
-} */
 
 /*--------------------------------------------------------------
 # articles
