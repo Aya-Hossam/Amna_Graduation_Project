@@ -1073,69 +1073,6 @@ section {
 }
 
 /*--------------------------------------------------------------
-Articles Old
---------------------------------------------------------------*/
-/* .articles {
-  overflow: hidden;
-  margin-top: 100px;
-}
-
-.articles .nav-tabs {
-  border: 0;
-}
-
-.articles .nav-link {
-  border: 0;
-  padding: 12px 15px 12px 0;
-  transition: 0.3s;
-  color: rgb(106, 0, 60);
-  border-radius: 0;
-  border-right: 2px solid #ebf1f6;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.articles .nav-link:hover {
-  color: #C83869;
-}
-
-.articles .nav-link.active {
-  color: #C83869;
-  border-color: #C83869;
-}
-
-.articles .tab-pane.active {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.articles .details h3 {
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: rgb(106, 0, 60);
-}
-
-.articles .details p {
-  color: #777777;
-}
-
-.articles .details p:last-child {
-  margin-bottom: 0;
-}
-
-@media (max-width: 992px) {
-  .articles .nav-link {
-    border: 0;
-    padding: 15px;
-  }
-
-  .articles .nav-link.active {
-    color: #fff;
-    background: #C83869;
-  }
-} */
-
-/*--------------------------------------------------------------
 # articles
 --------------------------------------------------------------*/
 .articles{
@@ -1229,7 +1166,7 @@ Articles Old
 }
 
 /*--------------------------------------------------------------
-Articles
+Single Article
 --------------------------------------------------------------*/
 
 .article {
@@ -1469,7 +1406,7 @@ body{
   text-decoration: underline;
 }
 /*--------------------------------------------------------------
-# CT Tool
+# Breast Altrasound Tool
 --------------------------------------------------------------*/
 .CT-upload-form {
   margin: 15vh auto; /* Center the form horizontally */
@@ -1595,7 +1532,9 @@ body{
   color: #C83869;
 }
 
-/*admin*/ 
+/*--------------------------------------------------------------
+# Admin
+--------------------------------------------------------------*/
 .admin-container {
   display: flex;
   margin-top: 150px;
@@ -1643,7 +1582,6 @@ main {
   flex: 1;
 }
 
-
 #user-table thead{
   border: 1px solid #A02D54;
 }
@@ -1679,7 +1617,6 @@ main {
 }
 
 #search {
-  /* background-color: #ffbbd4; Light pink background */
   border: 1px solid #C23669; /* Light pink border */
   border-radius: 15px; /* Rounded corners */
   padding: 10px; /* Padding for spacing */
@@ -1717,7 +1654,6 @@ main {
 
 #user-table th, td {
   padding: 10px;
-  word-wrap: break-word;
   border: 1px solid #C83869;
 }
 
@@ -1812,6 +1748,40 @@ main {
 
 #add-user-form button[type=submit]:hover {
   background: #E689AE;
+}
+
+.mobile-buttons {
+  display: none; /* Initially hidden */
+}
+
+.mobile-buttons button{
+  background-color: #C83869;
+  color: white;
+  padding: 10px 10%;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .mobile-buttons {
+    display: block;/* Show on mobile */
+    justify-content: space-between; /* Space buttons evenly */
+    margin-bottom: 20px; /* Add some margin */
+    width: 100%;
+    position: block ;
+    padding-top: 150px;
+  }
+
+  .sidebar {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  .admin-container {
+    display: inline;
+  }
 }
 
 

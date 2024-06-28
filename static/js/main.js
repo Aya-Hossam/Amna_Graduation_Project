@@ -257,7 +257,29 @@ function switchForm(formId) {
   }
 }
 
-/*admin*/
+//--------------------------- Admin -------------------------------------
+
+const buttonContainer = document.getElementById('button-container');
+
+function showMobileButtons() {
+  // Check if screen size is mobile (replace 768px with your desired breakpoint)
+  if (window.innerWidth <= 768) {
+    const viewUsersBtn = document.createElement('button');
+    viewUsersBtn.id = 'view-users-mobile';
+    viewUsersBtn.textContent = 'View Users';
+
+    const addUserBtn = document.createElement('button');
+    addUserBtn.id = 'add-user-mobile';
+    addUserBtn.textContent = 'Add User';
+
+    buttonContainer.appendChild(viewUsersBtn);
+    buttonContainer.appendChild(addUserBtn);
+  }
+}
+
+window.addEventListener('resize', showMobileButtons);
+
+showMobileButtons(); // Call initially on page load
 
 
 // Function to populate user list table
